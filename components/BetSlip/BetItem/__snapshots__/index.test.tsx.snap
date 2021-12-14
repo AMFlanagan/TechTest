@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event renders as expect with bets 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="BetItem"
+  />
+</DocumentFragment>
+`;

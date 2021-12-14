@@ -1,0 +1,13 @@
+.event {
+  background-color: #222222;
+  margin: 16px 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.eventHeader {
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  height: 40px;
+}

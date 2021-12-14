@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { allMarkets } from '../../../constants/markets'
-import { IEvent, Sport } from '../../../types/events'
+import { allEvents } from '../../../constants/events'
+import { IEvent, Sport } from '../../../types'
 
 const handler = (
   req: NextApiRequest,
@@ -12,10 +12,10 @@ const handler = (
     if (!Object.values(Sport).includes(req.query.slug[0] as Sport)) {
       return res.status(400).json({ error: 'Sport not found' })
     }
-    return res.status(200).json(allMarkets[req.query.slug[0] as Sport])
+    return res.status(200).json(allEvents[req.query.slug[0] as Sport])
   }
 
-  return res.status(200).json(allMarkets)
+  return res.status(200).json(allEvents)
 }
 
 export default handler

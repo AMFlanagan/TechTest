@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event renders as expect with bets 1`] = `
+<DocumentFragment>
+  <div
+    class="betListContainer"
+  >
+    <div
+      data-testid="BetItem"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Event renders as expect with no bets 1`] = `
+<DocumentFragment>
+  <div
+    class="betListContainer"
+  >
+    <div
+      class="noBet"
+    >
+      Nothing in Betslip
+    </div>
+  </div>
+</DocumentFragment>
+`;

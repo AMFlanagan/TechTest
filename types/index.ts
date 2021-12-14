@@ -27,6 +27,7 @@ export interface IOutcome {
 export type Market = FootballMarket | HorseRacingMarket | RugbyMarket
 
 export interface IMarket {
+  id: number
   type: Market
   outcomes: IOutcome[]
 }

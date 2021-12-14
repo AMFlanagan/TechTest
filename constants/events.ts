@@ -4,9 +4,9 @@ import {
   FootballMarket,
   RugbyMarket,
   HorseRacingMarket,
-} from '../types/events'
+} from '../types'
 
-export const allMarkets: { [key in Sport]: IEvent[] } = {
+export const allEvents: { [key in Sport]: IEvent[] } = {
   [Sport.FOOTBALL]: [
     {
       id: 1,
@@ -15,6 +15,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T15:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: FootballMarket.RESULT,
           outcomes: [
             {
@@ -43,6 +44,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T15:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: FootballMarket.RESULT,
           outcomes: [
             {
@@ -71,6 +73,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T15:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: FootballMarket.RESULT,
           outcomes: [
             {
@@ -101,6 +104,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T15:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: RugbyMarket.RESULT,
           outcomes: [
             {
@@ -129,6 +133,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T15:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: RugbyMarket.RESULT,
           outcomes: [
             {
@@ -159,6 +164,7 @@ export const allMarkets: { [key in Sport]: IEvent[] } = {
       startTime: '2022-01-02T14:00:00.000Z',
       markets: [
         {
+          id: 1,
           type: HorseRacingMarket.RESULT,
           outcomes: [
             {
