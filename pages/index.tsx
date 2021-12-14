@@ -1,7 +1,22 @@
 import type { NextPage } from 'next'
+import HomePageContainer from 'components/HomePageContainer'
+import { IEvent, Sport } from 'types'
 
-const Home: NextPage = () => {
-  return <div>HOME PAGE</div>
+interface IProps {
+  events: { [key in Sport]: IEvent[] }
 }
 
-export default Home
+const HomePage: NextPage<IProps> = (props: IProps) => {
+  return <HomePageContainer allEvents={props.events} />
+}
+
+HomePage.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/event')
+  const events = await res.json()
+
+  return {
+    events,
+  }
+}
+
+export default HomePage

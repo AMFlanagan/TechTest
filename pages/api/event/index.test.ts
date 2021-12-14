@@ -1,7 +1,7 @@
 import handler from './[[...slug]]'
 import { createMocks } from 'node-mocks-http'
 import { allMarkets } from '../../../constants/markets'
-import { Sport } from '../../../types/events'
+import { Sport } from '../../../types'
 
 describe('handler', () => {
   it('should return expected response for all sports', () => {

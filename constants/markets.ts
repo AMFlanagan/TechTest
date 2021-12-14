@@ -4,7 +4,7 @@ import {
   FootballMarket,
   RugbyMarket,
   HorseRacingMarket,
-} from '../types/events'
+} from '../types'
 
 export const allMarkets: { [key in Sport]: IEvent[] } = {
   [Sport.FOOTBALL]: [

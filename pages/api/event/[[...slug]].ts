@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { allMarkets } from '../../../constants/markets'
-import { IEvent, Sport } from '../../../types/events'
+import { IEvent, Sport } from '../../../types'
 
 const handler = (
   req: NextApiRequest,

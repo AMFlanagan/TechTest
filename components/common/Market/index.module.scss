@@ -1,0 +1,41 @@
+.marketContainer {
+  background-color: #555555;
+}
+
+.marketName {
+  text-align: center;
+  padding: 4px;
+}
+
+.outcomes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.outcomes > * {
+  border-bottom: 2px solid #555555;
+}
+
+.outcomes > *:last-child {
+  border: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .outcomes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .outcomes > * {
+    border: none;
+    border-right: 2px solid #555555;
+  }
+
+  .outcomes > *:last-child {
+    border: none;
+  }
+}
+
+
