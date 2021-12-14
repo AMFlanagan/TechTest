@@ -13,7 +13,7 @@ const Event: React.FC<IProps> = (props: IProps) => {
     <div className={styles.event}>
       <div className={styles.eventHeader}>{props.event.eventName}</div>
       <Market market={props.event.markets[0]} />
-    </div>    
+    </div>
   )
 }
 

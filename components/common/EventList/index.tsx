@@ -1,8 +1,8 @@
 import React from 'react'
-import { IEvent } from 'types'
+import { IEvent } from '../../../types'
 
-import Event from 'components/common/Event'
-import formatText from 'utils/formatText'
+import Event from '../Event'
+import formatText from '../../../utils/formatText'
 
 import styles from './index.module.scss'
 

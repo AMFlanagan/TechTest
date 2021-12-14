@@ -1,6 +1,6 @@
 import React from 'react'
-import { IMarket } from 'types'
-import Outcome from 'components/common/Outcome'
+import { IMarket } from '../../../types'
+import Outcome from '../Outcome'
 
 import styles from './index.module.scss'
 
@@ -13,8 +13,8 @@ const Market: React.FC<IProps> = (props: IProps) => {
     <div className={styles.marketContainer}>
       <div className={styles.marketName}>{props.market.type}</div>
       <div className={styles.outcomes}>
-        {props.market.outcomes.slice(0, 4).map((outcome) => {
-          return <Outcome outcome={outcome} />
+        {props.market.outcomes.slice(0, 4).map((outcome, i: number) => {
+          return <Outcome key={i} outcome={outcome} />
         })}
       </div>
     </div>

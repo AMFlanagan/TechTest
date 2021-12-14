@@ -1,7 +1,7 @@
 import React from 'react'
-import { IEvent, Sport } from 'types'
+import { IEvent, Sport } from '../../types'
 
-import EventList from 'components/common/EventList'
+import EventList from '../common/EventList'
 
 interface IProps {
   allEvents: { [key in Sport]: IEvent[] }
@@ -10,9 +10,9 @@ interface IProps {
 const HomePage: React.FC<IProps> = (props: IProps) => {
   return (
     <div>
-      {Object.entries(props.allEvents).map((sport) => {
+      {Object.entries(props.allEvents).map((sport, i: number) => {
         const [title, events] = sport
-        return <EventList title={title} events={events} />
+        return <EventList key={i} title={title} events={events} />
       })}
     </div>
   )

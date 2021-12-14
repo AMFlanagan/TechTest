@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePageContainer renders as expect 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      EventList
+    </div>
+    <div>
+      EventList
+    </div>
+    <div>
+      EventList
+    </div>
+  </div>
+</DocumentFragment>
+`;

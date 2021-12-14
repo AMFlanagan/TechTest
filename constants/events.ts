@@ -6,7 +6,7 @@ import {
   HorseRacingMarket,
 } from '../types'
 
-export const allMarkets: { [key in Sport]: IEvent[] } = {
+export const allEvents: { [key in Sport]: IEvent[] } = {
   [Sport.FOOTBALL]: [
     {
       id: 1,

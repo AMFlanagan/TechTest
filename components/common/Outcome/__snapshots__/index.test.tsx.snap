@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Outcome renders as expect 1`] = `
+<DocumentFragment>
+  <button
+    class="outcome"
+  >
+    <div
+      class="name"
+    >
+      home
+    </div>
+    <div
+      class="odds"
+    >
+      1.00
+    </div>
+  </button>
+</DocumentFragment>
+`;

@@ -1,6 +1,6 @@
 import handler from './[[...slug]]'
 import { createMocks } from 'node-mocks-http'
-import { allMarkets } from '../../../constants/markets'
+import { allEvents } from '../../../constants/events'
 import { Sport } from '../../../types'
 
 describe('handler', () => {
@@ -13,7 +13,7 @@ describe('handler', () => {
     handler(req, res)
 
     expect(res._getStatusCode()).toBe(200)
-    expect(JSON.parse(res._getData())).toEqual(allMarkets)
+    expect(JSON.parse(res._getData())).toEqual(allEvents)
   })
 
   it('should return expected response for all football', () => {
@@ -27,7 +27,7 @@ describe('handler', () => {
     handler(req, res)
 
     expect(res._getStatusCode()).toBe(200)
-    expect(JSON.parse(res._getData())).toEqual(allMarkets[Sport.FOOTBALL])
+    expect(JSON.parse(res._getData())).toEqual(allEvents[Sport.FOOTBALL])
   })
 
   it('should return expected response for all rugby', () => {
@@ -41,7 +41,7 @@ describe('handler', () => {
     handler(req, res)
 
     expect(res._getStatusCode()).toBe(200)
-    expect(JSON.parse(res._getData())).toEqual(allMarkets[Sport.RUGBY])
+    expect(JSON.parse(res._getData())).toEqual(allEvents[Sport.RUGBY])
   })
 
   it('should return expected response for all horse-racing', () => {
@@ -55,7 +55,7 @@ describe('handler', () => {
     handler(req, res)
 
     expect(res._getStatusCode()).toBe(200)
-    expect(JSON.parse(res._getData())).toEqual(allMarkets[Sport.HORSE_RACING])
+    expect(JSON.parse(res._getData())).toEqual(allEvents[Sport.HORSE_RACING])
   })
 
   it('throws an error if the sport is not found', () => {

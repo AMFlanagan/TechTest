@@ -1,6 +1,6 @@
 import React from 'react'
-import { IOutcome } from 'types'
-import formatOdds from 'utils/formatOdds'
+import { IOutcome } from '../../../types'
+import formatOdds from '../../../utils/formatOdds'
 
 import styles from './index.module.scss'
 
