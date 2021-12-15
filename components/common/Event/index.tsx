@@ -11,12 +11,10 @@ interface IProps {
 const Event: React.FC<IProps> = (props: IProps) => {
   return (
     <div className={styles.event}>
-      <div className={styles.eventHeader}>{props.event.eventName}</div>
-      <Market
-        eventName={props.event.eventName}
-        eventId={props.event.id}
-        market={props.event.markets[0]}
-      />
+      <div className={styles.eventHeader}>
+        Market Id: {props.event.marketId}
+      </div>
+      <Market event={props.event} />
     </div>
   )
 }

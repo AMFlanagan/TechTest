@@ -6,11 +6,6 @@ exports[`EventList renders as expect 1`] = `
     class="list"
   >
     <div
-      class="title"
-    >
-      Football
-    </div>
-    <div
       class="eventsContainer"
     >
       <div>

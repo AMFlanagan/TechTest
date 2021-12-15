@@ -1,43 +1,30 @@
 import Outcome from '.'
 import { fireEvent, render } from '@testing-library/react'
-import { IOutcome } from '../../../../types'
 
 describe('Outcome', () => {
   it('renders as expect', () => {
-    const outcome: IOutcome = {
-      id: 1,
-      name: 'home',
-      odds: 1.0,
-    }
+    const outcome = 'Team A Win'
 
     const { asFragment, getByText } = render(
-      <Outcome onSelect={() => {}} outcome={outcome} />
+      <Outcome onSelect={() => {}} marketId={1} outcome={outcome} />
     )
 
-    expect(getByText('home')).toBeTruthy()
-    expect(getByText('1.00')).toBeTruthy()
-
+    expect(getByText('Team A Win')).toBeTruthy()
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('calls onSelect when clicked', () => {
-    const outcome: IOutcome = {
-      id: 1,
-      name: 'home',
-      odds: 1.0,
-    }
+    const outcome = 'Team A Win'
     const onSelectMock = jest.fn()
 
     const { getByText } = render(
-      <Outcome onSelect={onSelectMock} outcome={outcome} />
+      <Outcome onSelect={onSelectMock} marketId={1} outcome={outcome} />
     )
 
-    fireEvent.click(getByText('home'))
+    fireEvent.click(getByText('Team A Win'))
 
     expect(onSelectMock).toBeCalledWith(
-      outcome.id,
-      outcome.name,
-      outcome.odds,
+      'Team A Win',
       false
     )
   })

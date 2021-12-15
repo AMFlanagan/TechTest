@@ -1,3 +1,4 @@
+import React from 'react'
 import Icon from '../../common/Icon'
 import { IconName } from '../../../constants/icons'
 import {
@@ -5,10 +6,10 @@ import {
   IBetSlipEntry,
   useBetSlip,
 } from '../../../context/BetSlip'
-import React from 'react'
-import formatNumbers from '../../../utils/formatNumbers'
+import placeBet from '../../../utils/placeBet'
 
 import styles from './index.module.scss'
+import formatNumbers from '../../../utils/formatNumbers'
 
 interface IProps {
   bet: IBetSlipEntry
@@ -16,61 +17,78 @@ interface IProps {
 
 const BetItem: React.FC<IProps> = (props: IProps) => {
   const { dispatch } = useBetSlip()
-  const [stake, setStake] = React.useState(props.bet.stake)
+
+  const [stake, setStake] = React.useState('')
+  const [odds, setOdds] = React.useState('')
+
+  const clickHandler = () => {
+    // Would be call to route with validity check
+    const res = placeBet({
+      ...props.bet,
+      stake: formatNumbers(stake),
+      odds: formatNumbers(odds),
+    })
+    if (res) {
+      removeBet()
+    }
+  }
+
+  const handleChange = (key: string, value: string) => {
+    if (key === 'stake') {
+      setStake(value)
+    }
+    if (key === 'odds') {
+      setOdds(value)
+    }
+  }
 
   const removeBet = () => {
     dispatch({
       type: ActionTypes.REMOVE,
       payload: {
-        eventId: props.bet.eventId,
-        outcomeId: props.bet.outcomeId,
-      },
-    })
-  }
-
-  const updateStake = (value: string) => {
-    dispatch({
-      type: ActionTypes.UPDATE,
-      payload: {
-        eventId: props.bet.eventId,
-        outcomeId: props.bet.outcomeId,
-        stake: formatNumbers(Number(value)),
+        marketId: props.bet.marketId,
+        outcome: props.bet.outcome,
       },
     })
   }
 
   return (
     <div className={styles.betItemContainer}>
-      <div className={styles.info}>
-        <div className={styles.outcomeName}>
-          {props.bet.outcomeName}
-          <div className={styles.odds}>
-            {formatNumbers(props.bet.outcomeOdds)}
-          </div>
+      <div className={styles.top}>
+        <div className={styles.info}>
+          <div className={styles.outcomeName}>{props.bet.outcome}</div>
+          <div className={styles.market}>MarketId: {props.bet.marketId}</div>
+          <button onClick={() => removeBet()} className={styles.remove}>
+            remove <Icon iconName={IconName.CROSS} />
+          </button>
         </div>
-        <div className={styles.market}>{props.bet.market}</div>
-        <div className={styles.eventName}>{props.bet.eventName}</div>
+
+        <div className={styles.actions}>
+          <label>Stake</label>
+          <input
+            data-testid="stake"
+            name="stake"
+            value={stake}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.stake}
+            type="number"
+            onBlur={() => setStake(formatNumbers(stake))}
+          />
+          <label>Odds</label>
+          <input
+            data-testid="odds"
+            name="odds"
+            value={odds}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.odds}
+            type="number"
+            onBlur={() => setOdds(formatNumbers(odds))}
+          />
+        </div>
       </div>
-      <div className={styles.actions}>
-        <button onClick={() => removeBet()} className={styles.remove}>
-          remove <Icon iconName={IconName.CROSS} />
-        </button>
-        <div>£</div>
-        <input
-          type="number"
-          required
-          min="0"
-          step="0.1"
-          // This is bad...
-          value={stake}
-          pattern="^\d+(?:\.\d{1,2})?$"
-          onChange={(e) => {
-            setStake(e.target.value)
-            updateStake(e.target.value)
-          }}
-          onBlur={() => setStake(formatNumbers(stake))}
-        ></input>
-      </div>
+      <button className={styles.placeBet} onClick={() => clickHandler()}>
+        Place Bet
+      </button>
     </div>
   )
 }

@@ -20,13 +20,8 @@ describe('Event', () => {
   it('renders as expect with bets', () => {
     const bets: IBetSlipEntry[] = [
       {
-        eventId: 1,
-        eventName: 'name',
-        market: 'market',
-        outcomeId: 1,
-        outcomeName: 'name',
-        outcomeOdds: 0.222,
-        stake: '0',
+        outcome: 'outcome',
+        marketId: 1,
       },
     ]
     const { asFragment, getByTestId } = render(<BetList bets={bets} />)

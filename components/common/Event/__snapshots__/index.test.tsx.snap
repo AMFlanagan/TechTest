@@ -8,7 +8,7 @@ exports[`Event renders as expected 1`] = `
     <div
       class="eventHeader"
     >
-      Event Name
+      Market Id: 1
     </div>
     <div>
       Market

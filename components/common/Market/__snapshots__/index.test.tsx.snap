@@ -15,6 +15,7 @@ exports[`Market renders as expect 1`] = `
     >
       <div />
       <div />
+      <div />
     </div>
   </div>
 </DocumentFragment>
