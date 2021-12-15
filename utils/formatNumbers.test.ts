@@ -1,6 +1,6 @@
-import formatOdds from './formatOdds'
+import formatNumbers from './formatNumbers'
 
-describe('formatOdds()', () => {
+describe('formatNumbers()', () => {
   const testCases = [
     {
       input: 3.0,
@@ -30,7 +30,7 @@ describe('formatOdds()', () => {
 
   testCases.forEach((testCase) => {
     it(`should return ${testCase.expectedOutput} when passed ${testCase.input}`, () => {
-      expect(formatOdds(testCase.input)).toEqual(testCase.expectedOutput)
+      expect(formatNumbers(testCase.input)).toEqual(testCase.expectedOutput)
     })
   })
 })

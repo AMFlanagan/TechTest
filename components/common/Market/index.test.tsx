@@ -2,9 +2,21 @@ import { render } from '@testing-library/react'
 
 import Market from '.'
 import { FootballMarket, IMarket } from '../../../types'
-import Outcome from '../Outcome'
+import Outcome from './Outcome'
 
-jest.mock('../Outcome', () => jest.fn(() => <div>Outcome</div>))
+jest.mock('./Outcome', () => jest.fn(() => <div></div>))
+
+const dispatchMock = jest.fn()
+
+const mockHook = {
+  dispatch: dispatchMock,
+}
+
+jest.mock('../../../context/BetSlip', () => ({
+  useBetSlip() {
+    return mockHook
+  },
+}))
 
 describe('Market', () => {
   afterEach(() => {
@@ -13,6 +25,7 @@ describe('Market', () => {
 
   it('renders as expect', () => {
     const market: IMarket = {
+      id: 1,
       outcomes: [
         {
           id: 1,
@@ -28,7 +41,9 @@ describe('Market', () => {
       type: FootballMarket.RESULT,
     }
 
-    const { asFragment, getByText } = render(<Market market={market} />)
+    const { asFragment, getByText } = render(
+      <Market market={market} eventName={''} eventId={0} />
+    )
 
     expect(getByText(FootballMarket.RESULT)).toBeTruthy()
 
@@ -46,6 +61,7 @@ describe('Market', () => {
 
   it('calls Outcome a maximum of 4 times', () => {
     const market: IMarket = {
+      id: 1,
       outcomes: [
         {
           id: 1,
@@ -76,7 +92,7 @@ describe('Market', () => {
       type: FootballMarket.RESULT,
     }
 
-    render(<Market market={market} />)
+    render(<Market market={market} eventName={''} eventId={0} />)
     expect(Outcome).toHaveBeenCalledTimes(4)
   })
 })

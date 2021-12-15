@@ -12,7 +12,11 @@ const Event: React.FC<IProps> = (props: IProps) => {
   return (
     <div className={styles.event}>
       <div className={styles.eventHeader}>{props.event.eventName}</div>
-      <Market market={props.event.markets[0]} />
+      <Market
+        eventName={props.event.eventName}
+        eventId={props.event.id}
+        market={props.event.markets[0]}
+      />
     </div>
   )
 }

@@ -6,12 +6,13 @@ import Market from '../Market'
 jest.mock('../Market', () => jest.fn(() => <div>Market</div>))
 
 describe('Event', () => {
-  it('renders as expect', () => {
+  it('renders as expected', () => {
     const event: IEvent = {
       id: 1,
       eventName: 'Event Name',
       markets: [
         {
+          id: 1,
           outcomes: [
             {
               id: 1,
@@ -32,6 +33,8 @@ describe('Event', () => {
     expect(asFragment()).toMatchSnapshot()
     expect(Market).toBeCalledWith(
       {
+        eventId: 1,
+        eventName: 'Event Name',
         market: event.markets[0],
       },
       expect.anything()

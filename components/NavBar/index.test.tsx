@@ -37,10 +37,6 @@ describe('Event', () => {
   })
 
   describe('actions', () => {
-    it('Test the page redirect after click', () => {
-      const { getByText } = render(<NavBar />)
-      fireEvent(getByText('Home'), new MouseEvent('click'))
-      // Need to assert on router somehow - TODO
-    })
+    // TODO when more routes added
   })
 })

@@ -3,7 +3,7 @@
 exports[`Outcome renders as expect 1`] = `
 <DocumentFragment>
   <button
-    class="outcome"
+    class="outcome false"
   >
     <div
       class="name"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Event renders as expect 1`] = `
+exports[`Event renders as expected 1`] = `
 <DocumentFragment>
   <div
     class="event"
