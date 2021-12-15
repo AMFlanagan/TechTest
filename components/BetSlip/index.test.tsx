@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react'
-import placeBets from '../../utils/placeBets'
 
 import BetSlip from '.'
 
@@ -30,7 +29,6 @@ jest.mock('../../context/BetSlip', () => ({
 }))
 
 jest.mock('./BetList', () => jest.fn(() => <div>BetList</div>))
-jest.mock('../../utils/placeBets')
 
 describe('BetSlip', () => {
   it('renders as expected', () => {
@@ -48,24 +46,5 @@ describe('BetSlip', () => {
     const secondSnapShot = asFragment()
 
     expect(firstSnapShot).not.toEqual(secondSnapShot)
-  })
-
-  it('clicking header opens betslip', () => {
-    const { getByText } = render(<BetSlip />)
-
-    fireEvent.click(getByText('Place Bets'))
-
-    expect(placeBets).toBeCalledWith([
-      {
-        eventId: 1,
-        eventName: 'eventName',
-        market: 'market',
-        marketId: 'marketId',
-        outcomeId: 1,
-        outcomeName: 'outcomeName',
-        outcomeOdds: 1,
-        stake: '0',
-      },
-    ])
   })
 })

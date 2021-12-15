@@ -1,14 +1,8 @@
 import React from 'react'
 
 export interface IBetSlipEntry {
-  eventId: number
-  eventName: string
-  market: string
   marketId: number
-  outcomeId: number
-  outcomeName: string
-  outcomeOdds: number
-  stake: string
+  outcome: string
 }
 
 interface IState {
@@ -18,8 +12,6 @@ interface IState {
 export enum ActionTypes {
   ADD = 'ADD',
   REMOVE = 'REMOVE',
-  UPDATE = 'UPDATE',
-  CLEAR_ALL = 'CLEAR_ALL',
 }
 
 type IAction = {
@@ -47,40 +39,26 @@ export const bestSlipReducer = (state: IState, action: IAction): IState => {
     case ActionTypes.ADD: {
       return {
         ...state,
-        bets: [...state.bets, action.payload],
-      }
-    }
-    case ActionTypes.UPDATE: {
-      const bets = [...state.bets]
-      var foundIndex = bets.findIndex(
-        (bet) =>
-          bet.eventId === action.payload.eventId &&
-          bet.outcomeId === action.payload.outcomeId
-      )
-      bets[foundIndex].stake = action.payload.stake
-      return {
-        ...state,
-        bets,
+        bets: [
+          ...state.bets,
+          {
+            ...action.payload,
+          }
+        ],
       }
     }
     case ActionTypes.REMOVE: {
       const newBets = state.bets.filter(
         (bet) =>
           !(
-            bet.eventId === action.payload.eventId &&
-            bet.outcomeId === action.payload.outcomeId
+            bet.marketId === action.payload.marketId &&
+            bet.outcome === action.payload.outcome
           )
       )
 
       return {
         ...state,
         bets: newBets,
-      }
-    }
-    case ActionTypes.CLEAR_ALL: {
-      return {
-        ...state,
-        bets: [],
       }
     }
   }

@@ -4,9 +4,7 @@ import BetList from './BetList'
 import { IconName } from '../../constants/icons'
 import Icon from '../common/Icon'
 
-import { ActionTypes, useBetSlip } from '../../context/BetSlip'
-
-import placeBets from '../../utils/placeBets'
+import { useBetSlip } from '../../context/BetSlip'
 
 import styles from './index.module.scss'
 
@@ -16,18 +14,8 @@ enum ViewState {
 }
 
 const BetSlip: React.FC = () => {
-  const { state, dispatch } = useBetSlip()
+  const { state } = useBetSlip()
   const [viewState, setViewState] = React.useState(ViewState.CLOSED)
-
-  const clickHandler = () => {
-    // Would be call to route with validity check
-    const res = placeBets(state.bets)
-    if (res) {
-      dispatch({
-        type: ActionTypes.CLEAR_ALL,
-      })
-    }
-  }
 
   return (
     <div
@@ -53,11 +41,6 @@ const BetSlip: React.FC = () => {
         </div>
       </button>
       <BetList bets={state.bets} />
-      <div className={styles.base}>
-        <button className={styles.placeBets} onClick={() => clickHandler()}>
-          Place Bets
-        </button>
-      </div>
     </div>
   )
 }

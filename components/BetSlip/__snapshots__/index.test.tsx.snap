@@ -36,15 +36,6 @@ exports[`BetSlip renders as expected 1`] = `
     <div>
       BetList
     </div>
-    <div
-      class="base"
-    >
-      <button
-        class="placeBets"
-      >
-        Place Bets
-      </button>
-    </div>
   </div>
 </DocumentFragment>
 `;

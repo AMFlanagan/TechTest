@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
+import { IEvent } from '../../../types'
+import Outcome from './Outcome'
 
 import Market from '.'
-import { FootballMarket, IMarket } from '../../../types'
-import Outcome from './Outcome'
 
 jest.mock('./Outcome', () => jest.fn(() => <div></div>))
 
@@ -24,30 +24,16 @@ describe('Market', () => {
   })
 
   it('renders as expect', () => {
-    const market: IMarket = {
-      id: 1,
-      outcomes: [
-        {
-          id: 1,
-          name: 'home',
-          odds: 1.0,
-        },
-        {
-          id: 2,
-          name: 'away',
-          odds: 2.0,
-        },
-      ],
-      type: FootballMarket.RESULT,
+    const event: IEvent = {
+      marketId: 1,
+      outcomes: ['Team A Win', 'Draw', 'Team B Win'],
     }
 
-    const { asFragment, getByText } = render(
-      <Market market={market} eventName={''} eventId={0} />
+    const { asFragment } = render(
+      <Market event={event} />
     )
 
-    expect(getByText(FootballMarket.RESULT)).toBeTruthy()
-
-    market.outcomes.forEach((outcome) => {
+    event.outcomes.forEach((outcome) => {
       expect(Outcome).toBeCalledWith(
         expect.objectContaining({
           outcome,
@@ -57,42 +43,5 @@ describe('Market', () => {
     })
 
     expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('calls Outcome a maximum of 4 times', () => {
-    const market: IMarket = {
-      id: 1,
-      outcomes: [
-        {
-          id: 1,
-          name: 'home',
-          odds: 1.0,
-        },
-        {
-          id: 2,
-          name: 'away',
-          odds: 2.0,
-        },
-        {
-          id: 3,
-          name: 'draw',
-          odds: 1.0,
-        },
-        {
-          id: 4,
-          name: 'none',
-          odds: 2.0,
-        },
-        {
-          id: 5,
-          name: 'none',
-          odds: 2.0,
-        },
-      ],
-      type: FootballMarket.RESULT,
-    }
-
-    render(<Market market={market} eventName={''} eventId={0} />)
-    expect(Outcome).toHaveBeenCalledTimes(4)
   })
 })

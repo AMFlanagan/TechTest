@@ -15,7 +15,9 @@ const BetList: React.FC<IProps> = (props: IProps) => {
         <div className={styles.noBet}>Nothing in Betslip</div>
       ) : (
         props.bets.map((bet: IBetSlipEntry, i: number) => (
-          <BetItem key={i} bet={bet} />
+          // This wouldn't be an issue if all odds and stake state was
+          // handled in the context as was planned
+          <BetItem key={`${bet.marketId}${bet.outcome}`} bet={bet} />
         ))
       )}
     </div>

@@ -8,12 +8,7 @@ exports[`Outcome renders as expect 1`] = `
     <div
       class="name"
     >
-      home
-    </div>
-    <div
-      class="odds"
-    >
-      1.00
+      Team A Win
     </div>
   </button>
 </DocumentFragment>

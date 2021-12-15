@@ -6,12 +6,6 @@ exports[`HomePageContainer renders as expect 1`] = `
     <div>
       EventList
     </div>
-    <div>
-      EventList
-    </div>
-    <div>
-      EventList
-    </div>
   </div>
 </DocumentFragment>
 `;

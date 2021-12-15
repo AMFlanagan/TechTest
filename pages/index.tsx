@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import HomePageContainer from '../components/HomePageContainer'
-import { IEvent, Sport } from '../types'
+import { IEvent } from '../types'
 
 interface IProps {
-  allEvents: { [key in Sport]: IEvent[] }
+  allEvents: IEvent[]
 }
 
 const HomePage: NextPage<IProps> = (props: IProps) => {

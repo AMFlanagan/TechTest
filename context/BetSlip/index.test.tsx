@@ -15,35 +15,14 @@ describe('BetSlipContext', () => {
 describe('betSlipReducer', () => {
   it('adds a bet', () => {
     const state = {
-      bets: [
-        {
-          eventId: 1,
-          outcomeId: 1,
-        } as IBetSlipEntry,
-      ],
-    }
-
-    const action = {
-      type: ActionTypes.CLEAR_ALL,
-    }
-
-    const newState = bestSlipReducer(state, action)
-
-    expect(newState).toEqual({
-      bets: [],
-    })
-  })
-
-  it('adds a bet', () => {
-    const state = {
       bets: [],
     }
 
     const action = {
       type: ActionTypes.ADD,
       payload: {
-        eventId: 1,
-        outcomeId: 1,
+        marketId: 1,
+        outcome: 'outcome',
       },
     }
 
@@ -52,8 +31,8 @@ describe('betSlipReducer', () => {
     expect(newState).toEqual({
       bets: [
         {
-          eventId: 1,
-          outcomeId: 1,
+          marketId: 1,
+          outcome: 'outcome',
         },
       ],
     })
@@ -63,21 +42,21 @@ describe('betSlipReducer', () => {
     const state = {
       bets: [
         {
-          eventId: 1,
-          outcomeId: 1,
-        } as IBetSlipEntry,
+          marketId: 1,
+          outcome: 'outcome',
+        },
         {
-          eventId: 2,
-          outcomeId: 2,
-        } as IBetSlipEntry,
+          marketId: 2,
+          outcome: 'outcome',
+        },
       ],
     }
 
     const action = {
       type: ActionTypes.REMOVE,
       payload: {
-        eventId: 1,
-        outcomeId: 1,
+        marketId: 1,
+        outcome: 'outcome',
       },
     }
 
@@ -86,48 +65,8 @@ describe('betSlipReducer', () => {
     expect(newState).toEqual({
       bets: [
         {
-          eventId: 2,
-          outcomeId: 2,
-        },
-      ],
-    })
-  })
-
-  it('updates a stake', () => {
-    const state = {
-      bets: [
-        {
-          eventId: 1,
-          outcomeId: 1,
-        } as IBetSlipEntry,
-        {
-          eventId: 2,
-          outcomeId: 2,
-        } as IBetSlipEntry,
-      ],
-    }
-
-    const action = {
-      type: ActionTypes.UPDATE,
-      payload: {
-        eventId: 1,
-        outcomeId: 1,
-        stake: 1,
-      },
-    }
-
-    const newState = bestSlipReducer(state, action)
-
-    expect(newState).toEqual({
-      bets: [
-        {
-          eventId: 1,
-          outcomeId: 1,
-          stake: 1,
-        },
-        {
-          eventId: 2,
-          outcomeId: 2,
+          marketId: 2,
+          outcome: 'outcome',
         },
       ],
     })
